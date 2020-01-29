@@ -7,7 +7,6 @@ import (
 	"log"
 	"math/rand"
 	"strconv"
-	"sync"
 	"time"
 
 	zerolog "github.com/rs/zerolog/log"
@@ -53,26 +52,32 @@ func main() {
 	}
 
 	zlogger, _ := zap.NewProduction()
+	defer zlogger.Sync()
 
-	var wg sync.WaitGroup
-	defer wg.Wait()
+	zSugarLogger, _ := zap.NewProduction()
+	defer zSugarLogger.Sync()
 
 	type loggerType func(msg string, dummy *dummy)
 
-	for _, f := range []struct {
-		name   string
-		logger loggerType
-	}{
-		{"Zerolog", func(msg string, dummy *dummy) { zerolog.Print(msg, "Dummy", dummy) }},
-		{"Logrus", func(msg string, dummy *dummy) { logrus.WithField("Dummy", dummy).Info(msg) }},
-		{"Zap", func(msg string, dummy *dummy) { zlogger.Info(msg, zap.Stringer("Dummy", dummy)) }},
-		{"ZapSugar", func(msg string, dummy *dummy) { zlogger.Sugar().Infow(msg, "Dummy", dummy) }},
-		{"StdLog", func(msg string, dummy *dummy) { log.Print(msg, "Dummy", dummy) }},
-	} {
-		t := time.Now()
-		for i := range textRandom {
-			f.logger(textRandom[i], &dummyLog[i])
+	func() /*chronometer*/ {
+		tic := time.Now()
+		defer func() { fmt.Println("\n>Total duration:", time.Since(tic)) }()
+
+		for _, f := range []struct {
+			name   string
+			logger loggerType
+		}{
+			{"Zerolog", func(msg string, dummy *dummy) { zerolog.Print(msg, "Dummy", dummy) }},
+			{"Logrus", func(msg string, dummy *dummy) { logrus.WithField("Dummy", dummy).Info(msg) }},
+			{"Zap", func(msg string, dummy *dummy) { zlogger.Info(msg, zap.Stringer("Dummy", dummy)) }},
+			{"ZapSugar", func(msg string, dummy *dummy) { zSugarLogger.Sugar().Infow(msg, "Dummy", dummy) }},
+			{"StdLog", func(msg string, dummy *dummy) { log.Print(msg, "Dummy", dummy) }},
+		} {
+			t := time.Now()
+			for i := range textRandom {
+				f.logger(textRandom[i], &dummyLog[i])
+			}
+			fmt.Println(f.name, ": ", int(time.Since(t).Nanoseconds())/len(textRandom), " ns per request")
 		}
-		fmt.Println(f.name, ": ", int(time.Since(t).Nanoseconds())/len(textRandom), " ns per request")
-	}
+	} /*chronometer*/ ()
 }

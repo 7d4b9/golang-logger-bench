@@ -8,7 +8,7 @@ all: $(ALL)
 
 all-plot: $(ALL:%=%_plot)
 
-.PHONY: $(ALL)
+.PHONY: all all-plot $(ALL) $(ALL:%=%_plot)
 
 $(ALL):
 	@echo TEST: $@ $$MESSAGES_NUM
@@ -25,3 +25,13 @@ $(ALL:%=%_plot):
 	@for i in 10 100 1000 10000 100000 1000000; do \
 		MESSAGES_NUM=$$i $(MAKE) $(@:%_plot=%) 2>/dev/null ; \
 	done
+
+.PHONY:update_readme
+update_readme:
+	@echo \# agnostic and simple benchmark cases: > README.md
+	@echo \`\`\`sh >> README.md
+	@echo make all-plot >> README.md
+	@echo \`\`\` >> README.md
+	@echo \`\`\`sh >> README.md
+	@$(MAKE) all-plot >> README.md
+	@echo \`\`\` >> README.md
