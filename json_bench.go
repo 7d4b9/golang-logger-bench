@@ -12,6 +12,7 @@ import (
 
 	zerolog "github.com/rs/zerolog/log"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 	zap "go.uber.org/zap"
 )
 
@@ -26,15 +27,29 @@ func (d *dummy) String() string {
 	return b.String()
 }
 
+const messagesNumConf = "messages_num"
+
+func init() {
+
+	rand.Seed(time.Now().Local().Unix())
+
+	viper.AutomaticEnv()
+	viper.SetDefault(messagesNumConf, 10000)
+}
+
 func main() {
-	dummyLog := dummy{
-		Foo: "foo",
-		Bar: "bar",
+
+	msgNum := viper.GetInt(messagesNumConf)
+
+	textRandom := make([]string, msgNum)
+	for i := range textRandom {
+		textRandom[i] = strconv.Itoa(rand.Int())
 	}
 
-	randomText := [10000]string{}
-	for i := range randomText {
-		randomText[i] = strconv.Itoa(rand.Int())
+	dummyLog := make([]dummy, msgNum)
+	for i := range dummyLog {
+		dummyLog[i].Foo = strconv.Itoa(rand.Int())
+		dummyLog[i].Bar = strconv.Itoa(rand.Int())
 	}
 
 	zlogger, _ := zap.NewProduction()
@@ -42,20 +57,22 @@ func main() {
 	var wg sync.WaitGroup
 	defer wg.Wait()
 
+	type loggerType func(msg string, dummy *dummy)
+
 	for _, f := range []struct {
 		name   string
-		logger func(msg string)
+		logger loggerType
 	}{
-		{"Zerolog", func(msg string) { zerolog.Print(msg, "Dummy", dummyLog) }},
-		{"Logrus", func(msg string) { logrus.WithField("Dummy", dummyLog).Info(msg) }},
-		{"Zap", func(msg string) { zlogger.Info(msg, zap.Stringer("Dummy", &dummyLog)) }},
-		{"ZapSugar", func(msg string) { zlogger.Sugar().Infow(msg, "Dummy", dummyLog) }},
-		{"StdLog", func(msg string) { log.Print(msg, "Dummy", dummyLog) }},
+		{"Zerolog", func(msg string, dummy *dummy) { zerolog.Print(msg, "Dummy", dummy) }},
+		{"Logrus", func(msg string, dummy *dummy) { logrus.WithField("Dummy", dummy).Info(msg) }},
+		{"Zap", func(msg string, dummy *dummy) { zlogger.Info(msg, zap.Stringer("Dummy", dummy)) }},
+		{"ZapSugar", func(msg string, dummy *dummy) { zlogger.Sugar().Infow(msg, "Dummy", dummy) }},
+		{"StdLog", func(msg string, dummy *dummy) { log.Print(msg, "Dummy", dummy) }},
 	} {
 		t := time.Now()
-		for i := range randomText {
-			f.logger(randomText[i])
+		for i := range textRandom {
+			f.logger(textRandom[i], &dummyLog[i])
 		}
-		fmt.Println(f.name, ": ", int(time.Since(t).Nanoseconds())/len(randomText), " ns per request")
+		fmt.Println(f.name, ": ", int(time.Since(t).Nanoseconds())/len(textRandom), " ns per request")
 	}
 }

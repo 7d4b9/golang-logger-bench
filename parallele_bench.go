@@ -10,14 +10,22 @@ import (
 
 	zerolog "github.com/rs/zerolog/log"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 	zap "go.uber.org/zap"
 )
+
+const messagesNumConf = "messages_num"
+
+func init() {
+	viper.AutomaticEnv()
+	viper.SetDefault(messagesNumConf, 10000)
+}
 
 func main() {
 
 	rand.Seed(time.Now().Local().Unix())
 
-	textRandom := [10000]string{}
+	textRandom := make([]string, viper.GetInt(messagesNumConf))
 
 	for i := range textRandom {
 		textRandom[i] = strconv.Itoa(rand.Int())
@@ -32,7 +40,7 @@ func main() {
 		name   string
 		logger func(msg string)
 	}{
-		{"Zerolog", func(msg string) { zerolog.Print(msg, "Dummy") }},
+		{"Zerolog", func(msg string) { zerolog.Print(msg) }},
 		{"Zap", func(msg string) { zlogger.Info(msg) }},
 		{"ZapSugar", func(msg string) { zlogger.Sugar().Infow(msg) }},
 		{"Logrus", func(msg string) { logrus.Info(msg) }},

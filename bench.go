@@ -9,12 +9,25 @@ import (
 
 	zerolog "github.com/rs/zerolog/log"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 	zap "go.uber.org/zap"
 )
 
+const messagesNumConf = "messages_num"
+
+func init() {
+
+	rand.Seed(time.Now().Local().Unix())
+
+	viper.AutomaticEnv()
+	viper.SetDefault(messagesNumConf, 10000)
+}
+
 func main() {
 
-	textRandom := [10000]string{}
+	msgNum := viper.GetInt(messagesNumConf)
+
+	textRandom := make([]string, msgNum)
 	for i := range textRandom {
 		textRandom[i] = strconv.Itoa(rand.Int())
 	}

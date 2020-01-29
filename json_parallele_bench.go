@@ -12,6 +12,7 @@ import (
 
 	zerolog "github.com/rs/zerolog/log"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 	zap "go.uber.org/zap"
 )
 
@@ -26,16 +27,29 @@ func (d *dummy) String() string {
 	return b.String()
 }
 
+const messagesNumConf = "messages_num"
+
+func init() {
+
+	rand.Seed(time.Now().Local().Unix())
+
+	viper.AutomaticEnv()
+	viper.SetDefault(messagesNumConf, 10000)
+}
+
 func main() {
-	var dummyLog [10000]dummy
+
+	msgNum := viper.GetInt(messagesNumConf)
+
+	textRandom := make([]string, msgNum)
+	for i := range textRandom {
+		textRandom[i] = strconv.Itoa(rand.Int())
+	}
+
+	dummyLog := make([]dummy, msgNum)
 	for i := range dummyLog {
 		dummyLog[i].Foo = strconv.Itoa(rand.Int())
 		dummyLog[i].Bar = strconv.Itoa(rand.Int())
-	}
-
-	textRandom := [10000]string{}
-	for i := range textRandom {
-		textRandom[i] = strconv.Itoa(rand.Int())
 	}
 
 	// ZAP logger extra lines (POO, whatever ?)
