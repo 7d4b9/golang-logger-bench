@@ -22,16 +22,21 @@ $(ALL):
 	@echo ---------------------
 
 $(ALL:%=%_plot):
-	@for i in 10 100 1000 10000 100000 1000000; do \
-		MESSAGES_NUM=$$i $(MAKE) $(@:%_plot=%) 2>/dev/null ; \
+	@for i in 10 100 1000 10000 100000 1000000 ; do \
+		MESSAGES_NUM=$$i $(MAKE) $(@:%_plot=%) 2>&1 ; \
 	done
 
-.PHONY:update_readme
-update_readme:
-	@echo \# agnostic and simple benchmark cases: > README.md
-	@echo \`\`\`sh >> README.md
-	@echo make all-plot >> README.md
-	@echo \`\`\` >> README.md
-	@echo \`\`\`sh >> README.md
-	@$(MAKE) all-plot >> README.md
-	@echo \`\`\` >> README.md
+README.md: _README.md
+	@mv _README.md README.md
+
+README_TARGET = all-plot
+
+_README.md:
+	@echo \# Log benchmarks: > $@
+	@echo Generated $@ > $@
+	@echo \`\`\`sh >> $@
+	@echo make $(README_TARGET) >> $@
+	@echo \`\`\` >> $@
+	@echo \`\`\`sh >> $@
+	@$(MAKE) $(README_TARGET) >> $@
+	@echo \`\`\` >> $@

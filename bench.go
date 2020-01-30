@@ -38,6 +38,8 @@ func main() {
 	zSugarLogger, _ := zap.NewProduction()
 	defer zSugarLogger.Sync()
 
+	logrus.SetFormatter(&logrus.JSONFormatter{})
+
 	func() /*chronometer*/ {
 		tic := time.Now()
 		defer func() { fmt.Println("\n>Total duration:", time.Since(tic)) }()
@@ -46,18 +48,17 @@ func main() {
 			name   string
 			logger func(msg string)
 		}{
-			{"Zerolog", func(msg string) { zerolog.Print(msg) }},
-			{"Logrus", func(msg string) { logrus.Info(msg) }},
-			{"Zap", func(msg string) { zlogger.Info(msg) }},
-			{"ZapSugar", func(msg string) { zSugarLogger.Sugar().Infow(msg) }},
-			{"StdLog", func(msg string) { log.Print(msg) }},
+			{"Zerolog", func(msg string) { zerolog.Print("Zerolog: " + msg) }},
+			{"Logrus", func(msg string) { logrus.Info("Logrus: " + msg) }},
+			{"Zap", func(msg string) { zlogger.Info("Zap: " + msg) }},
+			{"ZapSugar", func(msg string) { zSugarLogger.Sugar().Infow("ZapSugar: " + msg) }},
+			{"StdLog", func(msg string) { log.Print("StdLog: " + msg) }},
 		} {
 			t := time.Now()
 			for i := range textRandom {
 				f.logger(textRandom[i])
 			}
-			fmt.Println(f.name, ": ", int(time.Since(t).Nanoseconds())/len(textRandom), " ns per request")
-
+			fmt.Println(f.name+":", int(time.Since(t).Nanoseconds())/len(textRandom), "ns per request")
 		}
 	} /*chronometer*/ ()
 }

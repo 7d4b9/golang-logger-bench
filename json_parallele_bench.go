@@ -59,6 +59,8 @@ func main() {
 	zSugarLogger, _ := zap.NewProduction()
 	defer zSugarLogger.Sync()
 
+	logrus.SetFormatter(&logrus.JSONFormatter{})
+
 	type loggerType func(msg string, dummy *dummy)
 
 	func() /*chronometer*/ {
@@ -71,11 +73,11 @@ func main() {
 			name   string
 			logger loggerType
 		}{
-			{"Zerolog", func(msg string, dummy *dummy) { zerolog.Print(msg, "Dummy", dummy) }},
-			{"Logrus", func(msg string, dummy *dummy) { logrus.WithField("Dummy", dummy).Info(msg) }},
-			{"Zap", func(msg string, dummy *dummy) { zlogger.Info(msg, zap.Stringer("Dummy", dummy)) }},
-			{"ZapSugar", func(msg string, dummy *dummy) { zSugarLogger.Sugar().Infow(msg, "Dummy", dummy) }},
-			{"StdLog", func(msg string, dummy *dummy) { log.Print(msg, "Dummy", dummy) }},
+			{"Zerolog", func(msg string, dummy *dummy) { zerolog.Print(msg, "Zerolog", dummy) }},
+			{"Logrus", func(msg string, dummy *dummy) { logrus.WithField("Logrus", dummy).Info(msg) }},
+			{"Zap", func(msg string, dummy *dummy) { zlogger.Info(msg, zap.Stringer("Zap", dummy)) }},
+			{"ZapSugar", func(msg string, dummy *dummy) { zSugarLogger.Sugar().Infow(msg, "ZapSugar", dummy) }},
+			{"StdLog", func(msg string, dummy *dummy) { log.Print(msg, "StdLog", dummy) }},
 		} {
 			wg.Add(1)
 			go func(f struct {
@@ -87,7 +89,7 @@ func main() {
 				for i := range textRandom {
 					f.logger(textRandom[i], &dummyLog[i])
 				}
-				fmt.Println(f.name, ": ", int(time.Since(t).Nanoseconds())/len(textRandom), " ns per request")
+				fmt.Println(f.name+":", int(time.Since(t).Nanoseconds())/len(textRandom), "ns per request")
 			}(f)
 		}
 	} /*chronometer*/ ()
