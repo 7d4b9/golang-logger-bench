@@ -1,0 +1,66 @@
+
+
+Pull requests
+Issues
+Marketplace
+Explore
+
+@7d4b9
+spf13
+/
+viper
+ Watch 210
+ Unstar 11.1k
+ Fork 1k
+ Code  Issues 265  Pull requests 73  Actions  Projects 0  Wiki  Security  Insights
+updated docs in README.
+firestore   @alxmsl  05af1f8
+
+CI
+on: pull_request
+ Build (1.11)
+ Build (1.12)
+ Build (1.13)
+CI
+This run
+Workflow file
+Create status badge
+.github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 10
+      matrix:
+        go: ['1.11', '1.12', '1.13']
+    env:
+      VERBOSE: 1
+      GOFLAGS: -mod=readonly
+      GOPROXY: https://proxy.golang.org
+
+    steps:
+    - name: Set up Go
+    uses: actions/setup-go@v1
+    with:
+        go-version: ${{ matrix.go }}
+
+    - name: Checkout code
+    uses: actions/checkout@v1
+
+    - name: Run Generate report
+    run: make all-plot
+
+    - name: Commit generated README.md
+    run: |
+        git add README.md
+        git commit -m"Commit No. ${{ github.sha }} Updated Generated README"
+        git push
