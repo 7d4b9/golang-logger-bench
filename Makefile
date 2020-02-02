@@ -40,5 +40,6 @@ _README.md:
 	@echo make $(README_TARGET) >> $@
 	@echo \`\`\` >> $@
 	@echo \`\`\`sh >> $@
-	@$(MAKE) $(README_TARGET) >> $@
+	@$(MAKE) $(README_TARGET) | tee -a $@
 	@echo \`\`\` >> $@
+	@echo Generated $(@:_%=%)
