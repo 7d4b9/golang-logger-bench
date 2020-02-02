@@ -2,10 +2,14 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"math/rand"
+	"os"
 	"strconv"
 	"time"
+
+	"github.com/gol4ng/logger"
+	"github.com/gol4ng/logger/formatter"
+	"github.com/gol4ng/logger/handler"
 
 	zerolog "github.com/rs/zerolog/log"
 	"github.com/sirupsen/logrus"
@@ -38,7 +42,11 @@ func main() {
 	zSugarLogger, _ := zap.NewProduction()
 	defer zSugarLogger.Sync()
 
-	logrus.SetFormatter(&logrus.JSONFormatter{})
+	logrusLog := logrus.New()
+
+	logrusLog.SetFormatter(&logrus.JSONFormatter{})
+
+	loggerLog := logger.NewLogger(handler.Stream(os.Stderr, formatter.NewJSONEncoder()))
 
 	func() /*chronometer*/ {
 		tic := time.Now()
@@ -48,11 +56,21 @@ func main() {
 			name   string
 			logger func(msg string)
 		}{
-			{"Zerolog", func(msg string) { zerolog.Print("Zerolog: " + msg) }},
-			{"Logrus", func(msg string) { logrus.Info("Logrus: " + msg) }},
-			{"Zap", func(msg string) { zlogger.Info("Zap: " + msg) }},
-			{"ZapSugar", func(msg string) { zSugarLogger.Sugar().Infow("ZapSugar: " + msg) }},
-			{"StdLog", func(msg string) { log.Print("StdLog: " + msg) }},
+			{"Logger", func(msg string) {
+				loggerLog.Info("Logger: "+msg, nil)
+			}},
+			{"Logrus", func(msg string) {
+				logrusLog.Info("Logrus: " + msg)
+			}},
+			{"Zap", func(msg string) {
+				zlogger.Info("Zap: " + msg)
+			}},
+			{"ZapSugar", func(msg string) {
+				zSugarLogger.Sugar().Infow("ZapSugar: " + msg)
+			}},
+			{"Zerolog", func(msg string) {
+				zerolog.Print("Zerolog: " + msg)
+			}},
 		} {
 			t := time.Now()
 			for i := range textRandom {

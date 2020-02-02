@@ -32,8 +32,10 @@ README.md: _README.md
 README_TARGET = all-plot
 
 _README.md:
-	@echo \# Log benchmarks: > $@
-	@echo Generated $@ > $@
+	@echo \# Golang logger benchmark > $@
+	@echo $# >> $@
+	@echo Generated $(@:_%=%) >> $@
+	@echo "> Makefile : $(ALL) $(ALL:%=%_plot)" >> $@
 	@echo \`\`\`sh >> $@
 	@echo make $(README_TARGET) >> $@
 	@echo \`\`\` >> $@

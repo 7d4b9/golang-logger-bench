@@ -4,12 +4,15 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"log"
 	"math/rand"
+	"os"
 	"strconv"
 	"sync"
 	"time"
 
+	"github.com/gol4ng/logger"
+	"github.com/gol4ng/logger/formatter"
+	"github.com/gol4ng/logger/handler"
 	zerolog "github.com/rs/zerolog/log"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -59,7 +62,11 @@ func main() {
 	zSugarLogger, _ := zap.NewProduction()
 	defer zSugarLogger.Sync()
 
-	logrus.SetFormatter(&logrus.JSONFormatter{})
+	logrusLog := logrus.New()
+
+	logrusLog.SetFormatter(&logrus.JSONFormatter{})
+
+	loggerLog := logger.NewLogger(handler.Stream(os.Stderr, formatter.NewJSONEncoder()))
 
 	type loggerType func(msg string, dummy *dummy)
 
@@ -73,11 +80,24 @@ func main() {
 			name   string
 			logger loggerType
 		}{
-			{"Zerolog", func(msg string, dummy *dummy) { zerolog.Print(msg, "Zerolog", dummy) }},
-			{"Logrus", func(msg string, dummy *dummy) { logrus.WithField("Logrus", dummy).Info(msg) }},
-			{"Zap", func(msg string, dummy *dummy) { zlogger.Info(msg, zap.Stringer("Zap", dummy)) }},
-			{"ZapSugar", func(msg string, dummy *dummy) { zSugarLogger.Sugar().Infow(msg, "ZapSugar", dummy) }},
-			{"StdLog", func(msg string, dummy *dummy) { log.Print(msg, "StdLog", dummy) }},
+			{"Logger.Stringer", func(msg string, dummy *dummy) {
+				loggerLog.Info(msg, &logger.Context{"LoggerStringer": {logger.StringerType, dummy}})
+			}},
+			{"Logger.Reflect", func(msg string, dummy *dummy) {
+				loggerLog.Info(msg, &logger.Context{"LoggerReflect": logger.Field{logger.ReflectType, dummy}})
+			}},
+			{"Logrus", func(msg string, dummy *dummy) {
+				logrusLog.WithField("Logrus", dummy).Info(msg)
+			}},
+			{"Zap", func(msg string, dummy *dummy) {
+				zlogger.Info(msg, zap.Stringer("Zap", dummy))
+			}},
+			{"ZapSugar", func(msg string, dummy *dummy) {
+				zSugarLogger.Sugar().Infow(msg, "ZapSugar", dummy)
+			}},
+			{"Zerolog", func(msg string, dummy *dummy) {
+				zerolog.Info().Interface("Zerolog", dummy).Msg(msg)
+			}},
 		} {
 			wg.Add(1)
 			go func(f struct {

@@ -1,438 +1,465 @@
-Generated _README.md
+# Golang logger benchmark
+
+Generated README.md
+> Makefile : bench json_bench parallele_bench json_parallele_bench bench_plot json_bench_plot parallele_bench_plot json_parallele_bench_plot
 ```sh
 make all-plot
 ```
 ```sh
 TEST: bench 10
 sample:
-{"level":"debug","time":"2020-01-30T10:01:38+01:00","message":"Zerolog: 2551171196965782110"}
-{"level":"info","msg":"Logrus: 2551171196965782110","time":"2020-01-30T10:01:38+01:00"}
-{"level":"info","ts":1580374898.658868,"caller":"logrus/bench.go:53","msg":"Zap: 2551171196965782110"}
-{"level":"info","ts":1580374898.658977,"caller":"logrus/bench.go:54","msg":"ZapSugar: 2551171196965782110"}
-2020/01/30 10:01:38 StdLog: 2551171196965782110
+{"Message":"Logger: 6279746941961538829","Level":6,"Context":null}
+{"level":"info","msg":"Logrus: 6279746941961538829","time":"2020-02-02T11:56:12+01:00"}
+{"level":"info","ts":1580640972.3553731,"caller":"logrus/bench.go:66","msg":"Zap: 6279746941961538829"}
+{"level":"info","ts":1580640972.355463,"caller":"logrus/bench.go:69","msg":"ZapSugar: 6279746941961538829"}
+{"level":"debug","time":"2020-02-02T11:56:12+01:00","message":"Zerolog: 6279746941961538829"}
 --------------------
 results:
-Zerolog: 28934 ns per request
-Logrus: 19323 ns per request
-Zap: 16155 ns per request
-ZapSugar: 10734 ns per request
-StdLog: 2423 ns per request
+Logger: 4650 ns per request
+Logrus: 36036 ns per request
+Zap: 15554 ns per request
+ZapSugar: 10565 ns per request
+Zerolog: 5126 ns per request
 
->Total duration: 877.904µs
+>Total duration: 839.307µs
 _____________________
 ---------------------
 TEST: bench 100
 sample:
-{"level":"debug","time":"2020-01-30T10:01:42+01:00","message":"Zerolog: 4311770505602433868"}
-{"level":"info","msg":"Logrus: 4311770505602433868","time":"2020-01-30T10:01:42+01:00"}
-{"level":"info","ts":1580374902.603581,"caller":"logrus/bench.go:53","msg":"Zap: 4311770505602433868"}
-{"level":"info","ts":1580374902.603678,"caller":"logrus/bench.go:54","msg":"ZapSugar: 4311770505602433868"}
-2020/01/30 10:01:42 StdLog: 4311770505602433868
+{"Message":"Logger: 8043102384864134523","Level":6,"Context":null}
+{"level":"info","msg":"Logrus: 8043102384864134523","time":"2020-02-02T11:56:16+01:00"}
+{"level":"info","ts":1580640976.3777862,"caller":"logrus/bench.go:66","msg":"Zap: 8043102384864134523"}
+{"level":"info","ts":1580640976.377897,"caller":"logrus/bench.go:69","msg":"ZapSugar: 8043102384864134523"}
+{"level":"debug","time":"2020-02-02T11:56:16+01:00","message":"Zerolog: 8043102384864134523"}
 --------------------
 results:
-Zerolog: 4650 ns per request
-Logrus: 9258 ns per request
-Zap: 6362 ns per request
-ZapSugar: 6305 ns per request
-StdLog: 2108 ns per request
+Logger: 2518 ns per request
+Logrus: 11564 ns per request
+Zap: 6459 ns per request
+ZapSugar: 6708 ns per request
+Zerolog: 2946 ns per request
 
->Total duration: 2.971398ms
+>Total duration: 3.149507ms
 _____________________
 ---------------------
 TEST: bench 1000
 sample:
-{"level":"debug","time":"2020-01-30T10:01:46+01:00","message":"Zerolog: 7344154867412652978"}
-{"level":"info","msg":"Logrus: 7344154867412652978","time":"2020-01-30T10:01:46+01:00"}
-{"level":"info","ts":1580374906.255639,"caller":"logrus/bench.go:53","msg":"Zap: 7344154867412652978"}
-{"level":"info","ts":1580374906.255796,"caller":"logrus/bench.go:54","msg":"ZapSugar: 7344154867412652978"}
-2020/01/30 10:01:46 StdLog: 7344154867412652978
+{"Message":"Logger: 726665127020169825","Level":6,"Context":null}
+{"level":"info","msg":"Logrus: 726665127020169825","time":"2020-02-02T11:56:20+01:00"}
+{"level":"info","ts":1580640980.164404,"caller":"logrus/bench.go:66","msg":"Zap: 726665127020169825"}
+{"level":"info","ts":1580640980.1645,"caller":"logrus/bench.go:69","msg":"ZapSugar: 726665127020169825"}
+{"level":"debug","time":"2020-02-02T11:56:20+01:00","message":"Zerolog: 726665127020169825"}
 --------------------
 results:
-Zerolog: 3273 ns per request
-Logrus: 9400 ns per request
-Zap: 5065 ns per request
-ZapSugar: 6245 ns per request
-StdLog: 2230 ns per request
+Logger: 2368 ns per request
+Logrus: 8582 ns per request
+Zap: 5356 ns per request
+ZapSugar: 7435 ns per request
+Zerolog: 3569 ns per request
 
->Total duration: 26.430308ms
+>Total duration: 27.520539ms
 _____________________
 ---------------------
 TEST: bench 10000
 sample:
-{"level":"debug","time":"2020-01-30T10:01:51+01:00","message":"Zerolog: 5109066305323995517"}
-{"level":"info","msg":"Logrus: 5109066305323995517","time":"2020-01-30T10:01:51+01:00"}
-{"level":"info","ts":1580374911.724465,"caller":"logrus/bench.go:53","msg":"Zap: 5109066305323995517"}
-{"level":"info","ts":1580374911.724596,"caller":"logrus/bench.go:54","msg":"ZapSugar: 5109066305323995517"}
-2020/01/30 10:01:51 StdLog: 5109066305323995517
+{"Message":"Logger: 3652555429967922895","Level":6,"Context":null}
+{"level":"info","msg":"Logrus: 3652555429967922895","time":"2020-02-02T11:56:24+01:00"}
+{"level":"info","ts":1580640984.1060228,"caller":"logrus/bench.go:66","msg":"Zap: 3652555429967922895"}
+{"level":"info","ts":1580640984.1061141,"caller":"logrus/bench.go:69","msg":"ZapSugar: 3652555429967922895"}
+{"level":"debug","time":"2020-02-02T11:56:24+01:00","message":"Zerolog: 3652555429967922895"}
 --------------------
 results:
-Zerolog: 2702 ns per request
-Logrus: 7462 ns per request
-Zap: 4778 ns per request
-ZapSugar: 5274 ns per request
-StdLog: 2129 ns per request
+Logger: 2264 ns per request
+Logrus: 7484 ns per request
+Zap: 5253 ns per request
+ZapSugar: 5984 ns per request
+Zerolog: 2725 ns per request
 
->Total duration: 223.69951ms
+>Total duration: 237.45366ms
 _____________________
 ---------------------
 TEST: bench 100000
 sample:
-{"level":"debug","time":"2020-01-30T10:01:55+01:00","message":"Zerolog: 6951289732495515107"}
-{"level":"info","msg":"Logrus: 6951289732495515107","time":"2020-01-30T10:01:55+01:00"}
-{"level":"info","ts":1580374915.729366,"caller":"logrus/bench.go:53","msg":"Zap: 6951289732495515107"}
-{"level":"info","ts":1580374915.7294662,"caller":"logrus/bench.go:54","msg":"ZapSugar: 6951289732495515107"}
-2020/01/30 10:01:55 StdLog: 6951289732495515107
+{"Message":"Logger: 5558590184485769013","Level":6,"Context":null}
+{"level":"info","msg":"Logrus: 5558590184485769013","time":"2020-02-02T11:56:28+01:00"}
+{"level":"info","ts":1580640988.190465,"caller":"logrus/bench.go:66","msg":"Zap: 5558590184485769013"}
+{"level":"info","ts":1580640988.190561,"caller":"logrus/bench.go:69","msg":"ZapSugar: 5558590184485769013"}
+{"level":"debug","time":"2020-02-02T11:56:28+01:00","message":"Zerolog: 5558590184485769013"}
 --------------------
 results:
-Zerolog: 2678 ns per request
-Logrus: 8460 ns per request
-Zap: 6652 ns per request
-ZapSugar: 6181 ns per request
-StdLog: 2103 ns per request
+Logger: 2230 ns per request
+Logrus: 8417 ns per request
+Zap: 5396 ns per request
+ZapSugar: 6084 ns per request
+Zerolog: 2838 ns per request
 
->Total duration: 2.607918806s
+>Total duration: 2.49702142s
 _____________________
 ---------------------
 TEST: bench 1000000
 sample:
-{"level":"debug","time":"2020-01-30T10:02:02+01:00","message":"Zerolog: 6610212479150430682"}
-{"level":"info","msg":"Logrus: 6610212479150430682","time":"2020-01-30T10:02:02+01:00"}
-{"level":"info","ts":1580374922.0724962,"caller":"logrus/bench.go:53","msg":"Zap: 6610212479150430682"}
-{"level":"info","ts":1580374922.072601,"caller":"logrus/bench.go:54","msg":"ZapSugar: 6610212479150430682"}
-2020/01/30 10:02:02 StdLog: 6610212479150430682
+{"Message":"Logger: 8138231370733294038","Level":6,"Context":null}
+{"level":"info","msg":"Logrus: 8138231370733294038","time":"2020-02-02T11:56:34+01:00"}
+{"level":"info","ts":1580640994.4666848,"caller":"logrus/bench.go:66","msg":"Zap: 8138231370733294038"}
+{"level":"info","ts":1580640994.466779,"caller":"logrus/bench.go:69","msg":"ZapSugar: 8138231370733294038"}
+{"level":"debug","time":"2020-02-02T11:56:34+01:00","message":"Zerolog: 8138231370733294038"}
 --------------------
 results:
-Zerolog: 2950 ns per request
-Logrus: 7604 ns per request
-Zap: 4823 ns per request
-ZapSugar: 5296 ns per request
-StdLog: 2161 ns per request
+Logger: 2145 ns per request
+Logrus: 7624 ns per request
+Zap: 5151 ns per request
+ZapSugar: 5935 ns per request
+Zerolog: 2812 ns per request
 
->Total duration: 22.837146136s
+>Total duration: 23.670762235s
 _____________________
 ---------------------
 TEST: json_bench 10
 sample:
-{"level":"debug","time":"2020-01-30T10:02:29+01:00","message":"7216188272204197094Zerolog{\"foo\":\"7102752046737485505\",\"bar\":\"6713045383846035508\"}\n"}
-{"Logrus":{"foo":"7102752046737485505","bar":"6713045383846035508"},"level":"info","msg":"7216188272204197094","time":"2020-01-30T10:02:29+01:00"}
-{"level":"info","ts":1580374949.941916,"caller":"logrus/json_bench.go:74","msg":"7216188272204197094","Zap":"{\"foo\":\"7102752046737485505\",\"bar\":\"6713045383846035508\"}\n"}
-{"level":"info","ts":1580374949.942035,"caller":"logrus/json_bench.go:75","msg":"7216188272204197094","ZapSugar":"{\"foo\":\"7102752046737485505\",\"bar\":\"6713045383846035508\"}\n"}
-2020/01/30 10:02:29 7216188272204197094StdLog{"foo":"7102752046737485505","bar":"6713045383846035508"}
+{"Message":"4559346391730184767","Level":6,"Context":{"LoggerStringer":{"foo":"4174264162473799115","bar":"4409289114205181193"}}}
+{"Message":"4559346391730184767","Level":6,"Context":{"LoggerReflect":{"foo":"4174264162473799115","bar":"4409289114205181193"}}}
+{"Logrus":{"foo":"4174264162473799115","bar":"4409289114205181193"},"level":"info","msg":"4559346391730184767","time":"2020-02-02T11:57:02+01:00"}
+{"level":"info","ts":1580641022.244892,"caller":"logrus/json_bench.go:90","msg":"4559346391730184767","Zap":"{\"foo\":\"4174264162473799115\",\"bar\":\"4409289114205181193\"}\n"}
+{"level":"info","ts":1580641022.244996,"caller":"logrus/json_bench.go:93","msg":"4559346391730184767","ZapSugar":"{\"foo\":\"4174264162473799115\",\"bar\":\"4409289114205181193\"}\n"}
+{"level":"info","Zerolog":{"foo":"4174264162473799115","bar":"4409289114205181193"},"time":"2020-02-02T11:57:02+01:00","message":"4559346391730184767"}
 --------------------
 results:
-Zerolog: 34367 ns per request
-Logrus: 16973 ns per request
-Zap: 19552 ns per request
-ZapSugar: 24674 ns per request
-StdLog: 5856 ns per request
+Logger.Stringer: 16021 ns per request
+Logger.Reflect: 5224 ns per request
+Logrus: 34013 ns per request
+Zap: 20592 ns per request
+ZapSugar: 15056 ns per request
+Zerolog: 6123 ns per request
 
->Total duration: 1.124936ms
+>Total duration: 1.099173ms
 _____________________
 ---------------------
 TEST: json_bench 100
 sample:
-{"level":"debug","time":"2020-01-30T10:02:34+01:00","message":"4939596942468343466Zerolog{\"foo\":\"6797877694076855873\",\"bar\":\"8601247144494993588\"}\n"}
-{"Logrus":{"foo":"6797877694076855873","bar":"8601247144494993588"},"level":"info","msg":"4939596942468343466","time":"2020-01-30T10:02:34+01:00"}
-{"level":"info","ts":1580374954.3188748,"caller":"logrus/json_bench.go:74","msg":"4939596942468343466","Zap":"{\"foo\":\"6797877694076855873\",\"bar\":\"8601247144494993588\"}\n"}
-{"level":"info","ts":1580374954.318976,"caller":"logrus/json_bench.go:75","msg":"4939596942468343466","ZapSugar":"{\"foo\":\"6797877694076855873\",\"bar\":\"8601247144494993588\"}\n"}
-2020/01/30 10:02:34 4939596942468343466StdLog{"foo":"6797877694076855873","bar":"8601247144494993588"}
+{"Message":"2455379202271764944","Level":6,"Context":{"LoggerStringer":{"foo":"5655618399791757339","bar":"1530494768974504477"}}}
+{"Message":"2455379202271764944","Level":6,"Context":{"LoggerReflect":{"foo":"5655618399791757339","bar":"1530494768974504477"}}}
+{"Logrus":{"foo":"5655618399791757339","bar":"1530494768974504477"},"level":"info","msg":"2455379202271764944","time":"2020-02-02T11:57:05+01:00"}
+{"level":"info","ts":1580641025.947343,"caller":"logrus/json_bench.go:90","msg":"2455379202271764944","Zap":"{\"foo\":\"5655618399791757339\",\"bar\":\"1530494768974504477\"}\n"}
+{"level":"info","ts":1580641025.9474518,"caller":"logrus/json_bench.go:93","msg":"2455379202271764944","ZapSugar":"{\"foo\":\"5655618399791757339\",\"bar\":\"1530494768974504477\"}\n"}
+{"level":"info","Zerolog":{"foo":"5655618399791757339","bar":"1530494768974504477"},"time":"2020-02-02T11:57:05+01:00","message":"2455379202271764944"}
 --------------------
 results:
-Zerolog: 7927 ns per request
-Logrus: 11357 ns per request
-Zap: 10706 ns per request
-ZapSugar: 9605 ns per request
-StdLog: 3990 ns per request
+Logger.Stringer: 6025 ns per request
+Logger.Reflect: 4969 ns per request
+Logrus: 14499 ns per request
+Zap: 10024 ns per request
+ZapSugar: 10232 ns per request
+Zerolog: 3869 ns per request
 
->Total duration: 4.480428ms
+>Total duration: 5.108693ms
 _____________________
 ---------------------
 TEST: json_bench 1000
 sample:
-{"level":"debug","time":"2020-01-30T10:02:37+01:00","message":"1668060262027978298Zerolog{\"foo\":\"8622487033753602090\",\"bar\":\"5412059188166712793\"}\n"}
-{"Logrus":{"foo":"8622487033753602090","bar":"5412059188166712793"},"level":"info","msg":"1668060262027978298","time":"2020-01-30T10:02:37+01:00"}
-{"level":"info","ts":1580374957.871028,"caller":"logrus/json_bench.go:74","msg":"1668060262027978298","Zap":"{\"foo\":\"8622487033753602090\",\"bar\":\"5412059188166712793\"}\n"}
-{"level":"info","ts":1580374957.871138,"caller":"logrus/json_bench.go:75","msg":"1668060262027978298","ZapSugar":"{\"foo\":\"8622487033753602090\",\"bar\":\"5412059188166712793\"}\n"}
-2020/01/30 10:02:37 1668060262027978298StdLog{"foo":"8622487033753602090","bar":"5412059188166712793"}
+{"Message":"4292919050662571574","Level":6,"Context":{"LoggerStringer":{"foo":"1867501916500423627","bar":"6448274562673477899"}}}
+{"Message":"4292919050662571574","Level":6,"Context":{"LoggerReflect":{"foo":"1867501916500423627","bar":"6448274562673477899"}}}
+{"Logrus":{"foo":"1867501916500423627","bar":"6448274562673477899"},"level":"info","msg":"4292919050662571574","time":"2020-02-02T11:57:09+01:00"}
+{"level":"info","ts":1580641029.836094,"caller":"logrus/json_bench.go:90","msg":"4292919050662571574","Zap":"{\"foo\":\"1867501916500423627\",\"bar\":\"6448274562673477899\"}\n"}
+{"level":"info","ts":1580641029.836202,"caller":"logrus/json_bench.go:93","msg":"4292919050662571574","ZapSugar":"{\"foo\":\"1867501916500423627\",\"bar\":\"6448274562673477899\"}\n"}
+{"level":"info","Zerolog":{"foo":"1867501916500423627","bar":"6448274562673477899"},"time":"2020-02-02T11:57:09+01:00","message":"4292919050662571574"}
 --------------------
 results:
-Zerolog: 10761 ns per request
-Logrus: 30060 ns per request
-Zap: 15277 ns per request
-ZapSugar: 11270 ns per request
-StdLog: 4485 ns per request
+Logger.Stringer: 5239 ns per request
+Logger.Reflect: 5465 ns per request
+Logrus: 11512 ns per request
+Zap: 8464 ns per request
+ZapSugar: 9464 ns per request
+Zerolog: 3625 ns per request
 
->Total duration: 72.153556ms
+>Total duration: 44.054865ms
 _____________________
 ---------------------
 TEST: json_bench 10000
 sample:
-{"level":"debug","time":"2020-01-30T10:02:42+01:00","message":"258887970314695678Zerolog{\"foo\":\"8889058973204651738\",\"bar\":\"7146247278408535550\"}\n"}
-{"Logrus":{"foo":"8889058973204651738","bar":"7146247278408535550"},"level":"info","msg":"258887970314695678","time":"2020-01-30T10:02:42+01:00"}
-{"level":"info","ts":1580374962.505049,"caller":"logrus/json_bench.go:74","msg":"258887970314695678","Zap":"{\"foo\":\"8889058973204651738\",\"bar\":\"7146247278408535550\"}\n"}
-{"level":"info","ts":1580374962.505193,"caller":"logrus/json_bench.go:75","msg":"258887970314695678","ZapSugar":"{\"foo\":\"8889058973204651738\",\"bar\":\"7146247278408535550\"}\n"}
-2020/01/30 10:02:42 258887970314695678StdLog{"foo":"8889058973204651738","bar":"7146247278408535550"}
+{"Message":"6168663394785585828","Level":6,"Context":{"LoggerStringer":{"foo":"7210810555893977420","bar":"220235859916644455"}}}
+{"Message":"6168663394785585828","Level":6,"Context":{"LoggerReflect":{"foo":"7210810555893977420","bar":"220235859916644455"}}}
+{"Logrus":{"foo":"7210810555893977420","bar":"220235859916644455"},"level":"info","msg":"6168663394785585828","time":"2020-02-02T11:57:13+01:00"}
+{"level":"info","ts":1580641033.971068,"caller":"logrus/json_bench.go:90","msg":"6168663394785585828","Zap":"{\"foo\":\"7210810555893977420\",\"bar\":\"220235859916644455\"}\n"}
+{"level":"info","ts":1580641033.971207,"caller":"logrus/json_bench.go:93","msg":"6168663394785585828","ZapSugar":"{\"foo\":\"7210810555893977420\",\"bar\":\"220235859916644455\"}\n"}
+{"level":"info","Zerolog":{"foo":"7210810555893977420","bar":"220235859916644455"},"time":"2020-02-02T11:57:13+01:00","message":"6168663394785585828"}
 --------------------
 results:
-Zerolog: 5190 ns per request
-Logrus: 11023 ns per request
-Zap: 7921 ns per request
-ZapSugar: 8636 ns per request
-StdLog: 3957 ns per request
+Logger.Stringer: 8997 ns per request
+Logger.Reflect: 5801 ns per request
+Logrus: 13033 ns per request
+Zap: 10265 ns per request
+ZapSugar: 12492 ns per request
+Zerolog: 4074 ns per request
 
->Total duration: 367.54452ms
+>Total duration: 547.087467ms
 _____________________
 ---------------------
 TEST: json_bench 100000
 sample:
-{"level":"debug","time":"2020-01-30T10:02:47+01:00","message":"7238173094249297225Zerolog{\"foo\":\"8521804788262623083\",\"bar\":\"6656528774611607166\"}\n"}
-{"Logrus":{"foo":"8521804788262623083","bar":"6656528774611607166"},"level":"info","msg":"7238173094249297225","time":"2020-01-30T10:02:47+01:00"}
-{"level":"info","ts":1580374967.4649138,"caller":"logrus/json_bench.go:74","msg":"7238173094249297225","Zap":"{\"foo\":\"8521804788262623083\",\"bar\":\"6656528774611607166\"}\n"}
-{"level":"info","ts":1580374967.4650612,"caller":"logrus/json_bench.go:75","msg":"7238173094249297225","ZapSugar":"{\"foo\":\"8521804788262623083\",\"bar\":\"6656528774611607166\"}\n"}
-2020/01/30 10:02:47 7238173094249297225StdLog{"foo":"8521804788262623083","bar":"6656528774611607166"}
+{"Message":"8996321348197837245","Level":6,"Context":{"LoggerStringer":{"foo":"943107202896935780","bar":"7838501383458671136"}}}
+{"Message":"8996321348197837245","Level":6,"Context":{"LoggerReflect":{"foo":"943107202896935780","bar":"7838501383458671136"}}}
+{"Logrus":{"foo":"943107202896935780","bar":"7838501383458671136"},"level":"info","msg":"8996321348197837245","time":"2020-02-02T11:57:19+01:00"}
+{"level":"info","ts":1580641039.967689,"caller":"logrus/json_bench.go:90","msg":"8996321348197837245","Zap":"{\"foo\":\"943107202896935780\",\"bar\":\"7838501383458671136\"}\n"}
+{"level":"info","ts":1580641039.967807,"caller":"logrus/json_bench.go:93","msg":"8996321348197837245","ZapSugar":"{\"foo\":\"943107202896935780\",\"bar\":\"7838501383458671136\"}\n"}
+{"level":"info","Zerolog":{"foo":"943107202896935780","bar":"7838501383458671136"},"time":"2020-02-02T11:57:19+01:00","message":"8996321348197837245"}
 --------------------
 results:
-Zerolog: 5057 ns per request
-Logrus: 10238 ns per request
-Zap: 8113 ns per request
-ZapSugar: 8285 ns per request
-StdLog: 3888 ns per request
+Logger.Stringer: 4825 ns per request
+Logger.Reflect: 4572 ns per request
+Logrus: 10671 ns per request
+Zap: 9778 ns per request
+ZapSugar: 9621 ns per request
+Zerolog: 3605 ns per request
 
->Total duration: 3.558578021s
+>Total duration: 4.308002335s
 _____________________
 ---------------------
 TEST: json_bench 1000000
 sample:
-{"level":"debug","time":"2020-01-30T10:02:55+01:00","message":"1672769870155017885Zerolog{\"foo\":\"818598830912180347\",\"bar\":\"5347952139347106808\"}\n"}
-{"Logrus":{"foo":"818598830912180347","bar":"5347952139347106808"},"level":"info","msg":"1672769870155017885","time":"2020-01-30T10:02:55+01:00"}
-{"level":"info","ts":1580374975.254807,"caller":"logrus/json_bench.go:74","msg":"1672769870155017885","Zap":"{\"foo\":\"818598830912180347\",\"bar\":\"5347952139347106808\"}\n"}
-{"level":"info","ts":1580374975.2549179,"caller":"logrus/json_bench.go:75","msg":"1672769870155017885","ZapSugar":"{\"foo\":\"818598830912180347\",\"bar\":\"5347952139347106808\"}\n"}
-2020/01/30 10:02:55 1672769870155017885StdLog{"foo":"818598830912180347","bar":"5347952139347106808"}
+{"Message":"5450230664996450636","Level":6,"Context":{"LoggerStringer":{"foo":"987833720859454117","bar":"9079100341858192133"}}}
+{"Message":"5450230664996450636","Level":6,"Context":{"LoggerReflect":{"foo":"987833720859454117","bar":"9079100341858192133"}}}
+{"Logrus":{"foo":"987833720859454117","bar":"9079100341858192133"},"level":"info","msg":"5450230664996450636","time":"2020-02-02T11:57:29+01:00"}
+{"level":"info","ts":1580641049.324028,"caller":"logrus/json_bench.go:90","msg":"5450230664996450636","Zap":"{\"foo\":\"987833720859454117\",\"bar\":\"9079100341858192133\"}\n"}
+{"level":"info","ts":1580641049.324147,"caller":"logrus/json_bench.go:93","msg":"5450230664996450636","ZapSugar":"{\"foo\":\"987833720859454117\",\"bar\":\"9079100341858192133\"}\n"}
+{"level":"info","Zerolog":{"foo":"987833720859454117","bar":"9079100341858192133"},"time":"2020-02-02T11:57:29+01:00","message":"5450230664996450636"}
 --------------------
 results:
-Zerolog: 4952 ns per request
-Logrus: 10647 ns per request
-Zap: 7936 ns per request
-ZapSugar: 10695 ns per request
-StdLog: 4865 ns per request
+Logger.Stringer: 4755 ns per request
+Logger.Reflect: 4390 ns per request
+Logrus: 10784 ns per request
+Zap: 8498 ns per request
+ZapSugar: 9318 ns per request
+Zerolog: 3594 ns per request
 
->Total duration: 39.098729543s
+>Total duration: 41.342668723s
 _____________________
 ---------------------
 TEST: parallele_bench 10
 sample:
-2020/01/30 10:03:39 StdLog: 7537215850295871783
-{"level":"info","ts":1580375019.8331819,"caller":"logrus/parallele_bench.go:55","msg":"ZapSugar: 7537215850295871783"}
-{"level":"debug","time":"2020-01-30T10:03:39+01:00","message":"Zerolog: 7537215850295871783"}
-{"level":"info","ts":1580375019.833243,"caller":"logrus/parallele_bench.go:54","msg":"Zap: 7537215850295871783"}
-{"level":"info","msg":"Logrus: 7537215850295871783","time":"2020-01-30T10:03:39+01:00"}
+{"Message":"Logger: 7989478113641876326","Level":6,"Context":null}
+{"level":"info","ts":1580641096.4300191,"caller":"logrus/parallele_bench.go:67","msg":"Zap: 7989478113641876326"}
+{"level":"debug","time":"2020-02-02T11:58:16+01:00","message":"Zerolog: 7989478113641876326"}
+{"level":"info","ts":1580641096.4300869,"caller":"logrus/parallele_bench.go:70","msg":"ZapSugar: 7989478113641876326"}
+{"level":"info","msg":"Logrus: 7989478113641876326","time":"2020-02-02T11:58:16+01:00"}
 --------------------
 results:
-Zerolog: 31422 ns per request
-Zap: 60258 ns per request
-StdLog: 73718 ns per request
-ZapSugar: 72353 ns per request
-Logrus: 74950 ns per request
+Logger: 19876 ns per request
+ZapSugar: 31976 ns per request
+Zap: 48695 ns per request
+Zerolog: 53911 ns per request
+Logrus: 66017 ns per request
 
->Total duration: 866.087µs
+>Total duration: 744.42µs
 _____________________
 ---------------------
 TEST: parallele_bench 100
 sample:
-{"level":"info","ts":1580375024.206125,"caller":"logrus/parallele_bench.go:54","msg":"Zap: 5247004873706100587"}
-2020/01/30 10:03:44 StdLog: 5247004873706100587
-{"level":"debug","time":"2020-01-30T10:03:44+01:00","message":"Zerolog: 5247004873706100587"}
-{"level":"info","ts":1580375024.206229,"caller":"logrus/parallele_bench.go:55","msg":"ZapSugar: 5247004873706100587"}
-{"level":"info","msg":"Logrus: 5247004873706100587","time":"2020-01-30T10:03:44+01:00"}
+{"Message":"Logger: 526460676597058516","Level":6,"Context":null}
+{"level":"info","ts":1580641100.330647,"caller":"logrus/parallele_bench.go:67","msg":"Zap: 526460676597058516"}
+{"level":"info","ts":1580641100.3308291,"caller":"logrus/parallele_bench.go:70","msg":"ZapSugar: 526460676597058516"}
+{"level":"debug","time":"2020-02-02T11:58:20+01:00","message":"Zerolog: 526460676597058516"}
+{"level":"info","msg":"Logrus: 526460676597058516","time":"2020-02-02T11:58:20+01:00"}
 --------------------
 results:
-StdLog: 39131 ns per request
-Zerolog: 45639 ns per request
-ZapSugar: 55961 ns per request
-Logrus: 53423 ns per request
-Zap: 57895 ns per request
+Logger: 24880 ns per request
+Zerolog: 30402 ns per request
+Zap: 32676 ns per request
+ZapSugar: 33771 ns per request
+Logrus: 36010 ns per request
 
->Total duration: 5.930056ms
+>Total duration: 3.6799ms
 _____________________
 ---------------------
 TEST: parallele_bench 1000
 sample:
-{"level":"info","ts":1580375029.253558,"caller":"logrus/parallele_bench.go:54","msg":"Zap: 2765698756405531822"}
-2020/01/30 10:03:49 StdLog: 2765698756405531822
-{"level":"info","msg":"Logrus: 2765698756405531822","time":"2020-01-30T10:03:49+01:00"}
-{"level":"debug","time":"2020-01-30T10:03:49+01:00","message":"Zerolog: 2765698756405531822"}
-{"level":"info","ts":1580375029.254185,"caller":"logrus/parallele_bench.go:55","msg":"ZapSugar: 2765698756405531822"}
+{"Message":"Logger: 2442678073159455802","Level":6,"Context":null}
+{"level":"debug","time":"2020-02-02T11:58:24+01:00","message":"Zerolog: 2442678073159455802"}
+{"level":"info","ts":1580641104.0794141,"caller":"logrus/parallele_bench.go:67","msg":"Zap: 2442678073159455802"}
+{"level":"info","ts":1580641104.079447,"caller":"logrus/parallele_bench.go:70","msg":"ZapSugar: 2442678073159455802"}
+{"level":"info","msg":"Logrus: 2442678073159455802","time":"2020-02-02T11:58:24+01:00"}
 --------------------
 results:
-Zap: 24899 ns per request
-StdLog: 25960 ns per request
-Zerolog: 27039 ns per request
-Logrus: 31711 ns per request
-ZapSugar: 32272 ns per request
+Logger: 25796 ns per request
+Zerolog: 27572 ns per request
+Zap: 34154 ns per request
+ZapSugar: 35312 ns per request
+Logrus: 35855 ns per request
 
->Total duration: 32.369489ms
+>Total duration: 35.94148ms
 _____________________
 ---------------------
 TEST: parallele_bench 10000
 sample:
-{"level":"info","ts":1580375033.2812932,"caller":"logrus/parallele_bench.go:54","msg":"Zap: 5761257768688307612"}
-2020/01/30 10:03:53 StdLog: 5761257768688307612
-{"level":"debug","time":"2020-01-30T10:03:53+01:00","message":"Zerolog: 5761257768688307612"}
-{"level":"info","ts":1580375033.281302,"caller":"logrus/parallele_bench.go:55","msg":"ZapSugar: 5761257768688307612"}
-{"level":"info","msg":"Logrus: 5761257768688307612","time":"2020-01-30T10:03:53+01:00"}
+{"Message":"Logger: 8333187893650326475","Level":6,"Context":null}
+{"level":"info","ts":1580641107.868845,"caller":"logrus/parallele_bench.go:67","msg":"Zap: 8333187893650326475"}
+{"level":"info","ts":1580641107.868892,"caller":"logrus/parallele_bench.go:70","msg":"ZapSugar: 8333187893650326475"}
+{"level":"debug","time":"2020-02-02T11:58:27+01:00","message":"Zerolog: 8333187893650326475"}
+{"level":"info","msg":"Logrus: 8333187893650326475","time":"2020-02-02T11:58:27+01:00"}
 --------------------
 results:
-StdLog: 24568 ns per request
-Zerolog: 27077 ns per request
-ZapSugar: 32384 ns per request
-Zap: 35344 ns per request
-Logrus: 35676 ns per request
+Logger: 21482 ns per request
+Zerolog: 27030 ns per request
+Zap: 30283 ns per request
+ZapSugar: 31330 ns per request
+Logrus: 32245 ns per request
 
->Total duration: 357.086999ms
+>Total duration: 322.53731ms
 _____________________
 ---------------------
 TEST: parallele_bench 100000
 sample:
-{"level":"info","ts":1580375038.768476,"caller":"logrus/parallele_bench.go:54","msg":"Zap: 3487508695484243680"}
-2020/01/30 10:03:58 StdLog: 3487508695484243680
-{"level":"debug","time":"2020-01-30T10:03:58+01:00","message":"Zerolog: 3487508695484243680"}
-{"level":"info","ts":1580375038.768509,"caller":"logrus/parallele_bench.go:55","msg":"ZapSugar: 3487508695484243680"}
-{"level":"info","msg":"Logrus: 3487508695484243680","time":"2020-01-30T10:03:58+01:00"}
+{"Message":"Logger: 7237910770202756494","Level":6,"Context":null}
+{"level":"info","ts":1580641112.034805,"caller":"logrus/parallele_bench.go:70","msg":"ZapSugar: 7237910770202756494"}
+{"level":"debug","time":"2020-02-02T11:58:32+01:00","message":"Zerolog: 7237910770202756494"}
+{"level":"info","ts":1580641112.034772,"caller":"logrus/parallele_bench.go:67","msg":"Zap: 7237910770202756494"}
+{"level":"info","msg":"Logrus: 7237910770202756494","time":"2020-02-02T11:58:32+01:00"}
 --------------------
 results:
-StdLog: 19094 ns per request
-Zerolog: 20926 ns per request
-ZapSugar: 25577 ns per request
-Zap: 27248 ns per request
-Logrus: 27892 ns per request
+Logger: 24705 ns per request
+Zerolog: 25096 ns per request
+ZapSugar: 29656 ns per request
+Zap: 30241 ns per request
+Logrus: 31091 ns per request
 
->Total duration: 2.789514059s
+>Total duration: 3.109221789s
 _____________________
 ---------------------
 TEST: parallele_bench 1000000
 sample:
-{"level":"info","ts":1580375046.211794,"caller":"logrus/parallele_bench.go:54","msg":"Zap: 7202437140349226036"}
-{"level":"debug","time":"2020-01-30T10:04:06+01:00","message":"Zerolog: 7202437140349226036"}
-2020/01/30 10:04:06 StdLog: 7202437140349226036
-{"level":"info","ts":1580375046.2121012,"caller":"logrus/parallele_bench.go:55","msg":"ZapSugar: 7202437140349226036"}
-{"level":"info","msg":"Logrus: 7202437140349226036","time":"2020-01-30T10:04:06+01:00"}
+{"Message":"Logger: 658954141239483439","Level":6,"Context":null}
+{"level":"info","ts":1580641118.9222558,"caller":"logrus/parallele_bench.go:67","msg":"Zap: 658954141239483439"}
+{"level":"info","ts":1580641118.922411,"caller":"logrus/parallele_bench.go:70","msg":"ZapSugar: 658954141239483439"}
+{"level":"debug","time":"2020-02-02T11:58:38+01:00","message":"Zerolog: 658954141239483439"}
+{"level":"info","msg":"Logrus: 658954141239483439","time":"2020-02-02T11:58:38+01:00"}
 --------------------
 results:
-StdLog: 25427 ns per request
-Zerolog: 25947 ns per request
-Zap: 31364 ns per request
-ZapSugar: 31713 ns per request
-Logrus: 32788 ns per request
+Logger: 22366 ns per request
+Zerolog: 24172 ns per request
+ZapSugar: 29840 ns per request
+Zap: 30070 ns per request
+Logrus: 30862 ns per request
 
->Total duration: 32.789106405s
+>Total duration: 30.862767641s
 _____________________
 ---------------------
 TEST: json_parallele_bench 10
 sample:
-{"level":"info","ts":1580375083.3615649,"caller":"logrus/json_parallele_bench.go:79","msg":"4092665920117515847","ZapSugar":"{\"foo\":\"6663618552046423790\",\"bar\":\"7286187599510025567\"}\n"}
-{"level":"info","ts":1580375083.361568,"caller":"logrus/json_parallele_bench.go:78","msg":"4092665920117515847","Zap":"{\"foo\":\"6663618552046423790\",\"bar\":\"7286187599510025567\"}\n"}
-{"level":"debug","time":"2020-01-30T10:04:43+01:00","message":"4092665920117515847Zerolog{\"foo\":\"6663618552046423790\",\"bar\":\"7286187599510025567\"}\n"}
-2020/01/30 10:04:43 4092665920117515847StdLog{"foo":"6663618552046423790","bar":"7286187599510025567"}
-{"Logrus":{"foo":"6663618552046423790","bar":"7286187599510025567"},"level":"info","msg":"4092665920117515847","time":"2020-01-30T10:04:43+01:00"}
+{"Message":"5971111271726804112","Level":6,"Context":{"LoggerStringer":{"foo":"837791428891411887","bar":"5946401255663496721"}}}
+{"level":"info","ts":1580641153.806365,"caller":"logrus/json_parallele_bench.go:93","msg":"5971111271726804112","Zap":"{\"foo\":\"837791428891411887\",\"bar\":\"5946401255663496721\"}\n"}
+{"Message":"5971111271726804112","Level":6,"Context":{"LoggerReflect":{"foo":"837791428891411887","bar":"5946401255663496721"}}}
+{"level":"info","ts":1580641153.80654,"caller":"logrus/json_parallele_bench.go:96","msg":"5971111271726804112","ZapSugar":"{\"foo\":\"837791428891411887\",\"bar\":\"5946401255663496721\"}\n"}
+{"level":"info","Zerolog":{"foo":"837791428891411887","bar":"5946401255663496721"},"time":"2020-02-02T11:59:13+01:00","message":"5971111271726804112"}
+{"Logrus":{"foo":"837791428891411887","bar":"5946401255663496721"},"level":"info","msg":"5971111271726804112","time":"2020-02-02T11:59:13+01:00"}
 --------------------
 results:
-Zap: 65571 ns per request
-StdLog: 84503 ns per request
-Zerolog: 88716 ns per request
-ZapSugar: 88863 ns per request
-Logrus: 101861 ns per request
+Logger.Stringer: 40537 ns per request
+Logger.Reflect: 60789 ns per request
+Zerolog: 85187 ns per request
+ZapSugar: 69183 ns per request
+Zap: 73790 ns per request
+Logrus: 102471 ns per request
 
->Total duration: 1.095242ms
+>Total duration: 1.100504ms
 _____________________
 ---------------------
 TEST: json_parallele_bench 100
 sample:
-{"level":"info","ts":1580375087.201748,"caller":"logrus/json_parallele_bench.go:79","msg":"6009594360842759989","ZapSugar":"{\"foo\":\"2783633245467298950\",\"bar\":\"1011674774904777804\"}\n"}
-{"level":"info","ts":1580375087.2017338,"caller":"logrus/json_parallele_bench.go:78","msg":"6009594360842759989","Zap":"{\"foo\":\"2783633245467298950\",\"bar\":\"1011674774904777804\"}\n"}
-{"level":"debug","time":"2020-01-30T10:04:47+01:00","message":"6009594360842759989Zerolog{\"foo\":\"2783633245467298950\",\"bar\":\"1011674774904777804\"}\n"}
-2020/01/30 10:04:47 6009594360842759989StdLog{"foo":"2783633245467298950","bar":"1011674774904777804"}
-{"Logrus":{"foo":"2783633245467298950","bar":"1011674774904777804"},"level":"info","msg":"6009594360842759989","time":"2020-01-30T10:04:47+01:00"}
+{"Message":"7877435496848272630","Level":6,"Context":{"LoggerStringer":{"foo":"6182341610775953743","bar":"1687699754048148733"}}}
+{"level":"info","ts":1580641157.930756,"caller":"logrus/json_parallele_bench.go:93","msg":"7877435496848272630","Zap":"{\"foo\":\"6182341610775953743\",\"bar\":\"1687699754048148733\"}\n"}
+{"level":"info","ts":1580641157.9308522,"caller":"logrus/json_parallele_bench.go:96","msg":"7877435496848272630","ZapSugar":"{\"foo\":\"6182341610775953743\",\"bar\":\"1687699754048148733\"}\n"}
+{"Message":"7877435496848272630","Level":6,"Context":{"LoggerReflect":{"foo":"6182341610775953743","bar":"1687699754048148733"}}}
+{"level":"info","Zerolog":{"foo":"6182341610775953743","bar":"1687699754048148733"},"time":"2020-02-02T11:59:17+01:00","message":"7877435496848272630"}
+{"Logrus":{"foo":"6182341610775953743","bar":"1687699754048148733"},"level":"info","msg":"7877435496848272630","time":"2020-02-02T11:59:17+01:00"}
 --------------------
 results:
-StdLog: 39601 ns per request
-Zerolog: 41191 ns per request
-Zap: 42617 ns per request
-Logrus: 45376 ns per request
-ZapSugar: 46399 ns per request
+Zerolog: 34755 ns per request
+Logger.Stringer: 37613 ns per request
+Logger.Reflect: 39059 ns per request
+ZapSugar: 43821 ns per request
+Zap: 45684 ns per request
+Logrus: 48646 ns per request
 
->Total duration: 4.745862ms
+>Total duration: 4.943286ms
 _____________________
 ---------------------
 TEST: json_parallele_bench 1000
 sample:
-{"level":"info","ts":1580375090.8870678,"caller":"logrus/json_parallele_bench.go:78","msg":"3809845119943323333","Zap":"{\"foo\":\"3994538292824829166\",\"bar\":\"6977118017069742433\"}\n"}
-{"level":"info","ts":1580375090.887087,"caller":"logrus/json_parallele_bench.go:79","msg":"3809845119943323333","ZapSugar":"{\"foo\":\"3994538292824829166\",\"bar\":\"6977118017069742433\"}\n"}
-{"level":"debug","time":"2020-01-30T10:04:50+01:00","message":"3809845119943323333Zerolog{\"foo\":\"3994538292824829166\",\"bar\":\"6977118017069742433\"}\n"}
-2020/01/30 10:04:50 3809845119943323333StdLog{"foo":"3994538292824829166","bar":"6977118017069742433"}
-{"Logrus":{"foo":"3994538292824829166","bar":"6977118017069742433"},"level":"info","msg":"3809845119943323333","time":"2020-01-30T10:04:50+01:00"}
+{"level":"info","ts":1580641161.885012,"caller":"logrus/json_parallele_bench.go:96","msg":"420012667130226020","ZapSugar":"{\"foo\":\"2958029448348868272\",\"bar\":\"4589322828674054986\"}\n"}
+{"Message":"420012667130226020","Level":6,"Context":{"LoggerReflect":{"foo":"2958029448348868272","bar":"4589322828674054986"}}}
+{"Message":"420012667130226020","Level":6,"Context":{"LoggerStringer":{"foo":"2958029448348868272","bar":"4589322828674054986"}}}
+{"level":"info","ts":1580641161.88502,"caller":"logrus/json_parallele_bench.go:93","msg":"420012667130226020","Zap":"{\"foo\":\"2958029448348868272\",\"bar\":\"4589322828674054986\"}\n"}
+{"level":"info","Zerolog":{"foo":"2958029448348868272","bar":"4589322828674054986"},"time":"2020-02-02T11:59:21+01:00","message":"420012667130226020"}
+{"Logrus":{"foo":"2958029448348868272","bar":"4589322828674054986"},"level":"info","msg":"420012667130226020","time":"2020-02-02T11:59:21+01:00"}
 --------------------
 results:
-StdLog: 34357 ns per request
-Zerolog: 36886 ns per request
-Zap: 38787 ns per request
-ZapSugar: 40727 ns per request
-Logrus: 41415 ns per request
+Zerolog: 34003 ns per request
+Logger.Reflect: 38299 ns per request
+Logger.Stringer: 38540 ns per request
+Zap: 45433 ns per request
+ZapSugar: 45555 ns per request
+Logrus: 46375 ns per request
 
->Total duration: 41.49768ms
+>Total duration: 46.457737ms
 _____________________
 ---------------------
 TEST: json_parallele_bench 10000
 sample:
-{"level":"info","ts":1580375094.919905,"caller":"logrus/json_parallele_bench.go:79","msg":"5651318541934194475","ZapSugar":"{\"foo\":\"187328805340793295\",\"bar\":\"3035672743497359373\"}\n"}
-{"level":"info","ts":1580375094.919887,"caller":"logrus/json_parallele_bench.go:78","msg":"5651318541934194475","Zap":"{\"foo\":\"187328805340793295\",\"bar\":\"3035672743497359373\"}\n"}
-{"level":"debug","time":"2020-01-30T10:04:54+01:00","message":"5651318541934194475Zerolog{\"foo\":\"187328805340793295\",\"bar\":\"3035672743497359373\"}\n"}
-2020/01/30 10:04:54 5651318541934194475StdLog{"foo":"187328805340793295","bar":"3035672743497359373"}
-{"Logrus":{"foo":"187328805340793295","bar":"3035672743497359373"},"level":"info","msg":"5651318541934194475","time":"2020-01-30T10:04:54+01:00"}
+{"Message":"2335127221385864778","Level":6,"Context":{"LoggerStringer":{"foo":"8280105674315579951","bar":"520671903339819635"}}}
+{"Message":"2335127221385864778","Level":6,"Context":{"LoggerReflect":{"foo":"8280105674315579951","bar":"520671903339819635"}}}
+{"level":"info","ts":1580641165.880037,"caller":"logrus/json_parallele_bench.go:93","msg":"2335127221385864778","Zap":"{\"foo\":\"8280105674315579951\",\"bar\":\"520671903339819635\"}\n"}
+{"level":"info","ts":1580641165.880044,"caller":"logrus/json_parallele_bench.go:96","msg":"2335127221385864778","ZapSugar":"{\"foo\":\"8280105674315579951\",\"bar\":\"520671903339819635\"}\n"}
+{"level":"info","Zerolog":{"foo":"8280105674315579951","bar":"520671903339819635"},"time":"2020-02-02T11:59:25+01:00","message":"2335127221385864778"}
+{"Logrus":{"foo":"8280105674315579951","bar":"520671903339819635"},"level":"info","msg":"2335127221385864778","time":"2020-02-02T11:59:25+01:00"}
 --------------------
 results:
-StdLog: 30541 ns per request
-Zerolog: 33325 ns per request
-Zap: 39230 ns per request
-ZapSugar: 39663 ns per request
-Logrus: 40407 ns per request
+Logger.Stringer: 35645 ns per request
+Zerolog: 37677 ns per request
+Logger.Reflect: 38917 ns per request
+Zap: 44304 ns per request
+ZapSugar: 44599 ns per request
+Logrus: 44806 ns per request
 
->Total duration: 404.174322ms
+>Total duration: 448.141361ms
 _____________________
 ---------------------
 TEST: json_parallele_bench 100000
 sample:
-{"level":"info","ts":1580375099.209841,"caller":"logrus/json_parallele_bench.go:78","msg":"3380046655242664175","Zap":"{\"foo\":\"435822572708970895\",\"bar\":\"4768704971931816079\"}\n"}
-{"level":"info","ts":1580375099.20985,"caller":"logrus/json_parallele_bench.go:79","msg":"3380046655242664175","ZapSugar":"{\"foo\":\"435822572708970895\",\"bar\":\"4768704971931816079\"}\n"}
-{"level":"debug","time":"2020-01-30T10:04:59+01:00","message":"3380046655242664175Zerolog{\"foo\":\"435822572708970895\",\"bar\":\"4768704971931816079\"}\n"}
-2020/01/30 10:04:59 3380046655242664175StdLog{"foo":"435822572708970895","bar":"4768704971931816079"}
-{"Logrus":{"foo":"435822572708970895","bar":"4768704971931816079"},"level":"info","msg":"3380046655242664175","time":"2020-01-30T10:04:59+01:00"}
+{"Message":"932575069855018893","Level":6,"Context":{"LoggerStringer":{"foo":"8188608732229792240","bar":"9036206741081842424"}}}
+{"Message":"932575069855018893","Level":6,"Context":{"LoggerReflect":{"foo":"8188608732229792240","bar":"9036206741081842424"}}}
+{"level":"info","ts":1580641170.3735838,"caller":"logrus/json_parallele_bench.go:93","msg":"932575069855018893","Zap":"{\"foo\":\"8188608732229792240\",\"bar\":\"9036206741081842424\"}\n"}
+{"level":"info","Zerolog":{"foo":"8188608732229792240","bar":"9036206741081842424"},"time":"2020-02-02T11:59:30+01:00","message":"932575069855018893"}
+{"level":"info","ts":1580641170.373605,"caller":"logrus/json_parallele_bench.go:96","msg":"932575069855018893","ZapSugar":"{\"foo\":\"8188608732229792240\",\"bar\":\"9036206741081842424\"}\n"}
+{"Logrus":{"foo":"8188608732229792240","bar":"9036206741081842424"},"level":"info","msg":"932575069855018893","time":"2020-02-02T11:59:30+01:00"}
 --------------------
 results:
-Zerolog: 29581 ns per request
-StdLog: 31129 ns per request
-Zap: 35550 ns per request
-ZapSugar: 35957 ns per request
-Logrus: 36127 ns per request
+Zerolog: 36812 ns per request
+Logger.Reflect: 37922 ns per request
+Logger.Stringer: 38837 ns per request
+Zap: 45259 ns per request
+ZapSugar: 45447 ns per request
+Logrus: 45858 ns per request
 
->Total duration: 3.612837951s
+>Total duration: 4.585967878s
 _____________________
 ---------------------
 TEST: json_parallele_bench 1000000
 sample:
-{"level":"info","ts":1580375106.758386,"caller":"logrus/json_parallele_bench.go:79","msg":"3114230902425843949","ZapSugar":"{\"foo\":\"6919128875777902408\",\"bar\":\"6803128349924459680\"}\n"}
-{"level":"info","ts":1580375106.75839,"caller":"logrus/json_parallele_bench.go:78","msg":"3114230902425843949","Zap":"{\"foo\":\"6919128875777902408\",\"bar\":\"6803128349924459680\"}\n"}
-2020/01/30 10:05:06 3114230902425843949StdLog{"foo":"6919128875777902408","bar":"6803128349924459680"}
-{"level":"debug","time":"2020-01-30T10:05:06+01:00","message":"3114230902425843949Zerolog{\"foo\":\"6919128875777902408\",\"bar\":\"6803128349924459680\"}\n"}
-{"Logrus":{"foo":"6919128875777902408","bar":"6803128349924459680"},"level":"info","msg":"3114230902425843949","time":"2020-01-30T10:05:06+01:00"}
+{"Message":"575269020497523263","Level":6,"Context":{"LoggerStringer":{"foo":"3510565857353876841","bar":"4578135596460776054"}}}
+{"Message":"575269020497523263","Level":6,"Context":{"LoggerReflect":{"foo":"3510565857353876841","bar":"4578135596460776054"}}}
+{"level":"info","ts":1580641179.1443121,"caller":"logrus/json_parallele_bench.go:93","msg":"575269020497523263","Zap":"{\"foo\":\"3510565857353876841\",\"bar\":\"4578135596460776054\"}\n"}
+{"level":"info","ts":1580641179.1443222,"caller":"logrus/json_parallele_bench.go:96","msg":"575269020497523263","ZapSugar":"{\"foo\":\"3510565857353876841\",\"bar\":\"4578135596460776054\"}\n"}
+{"level":"info","Zerolog":{"foo":"3510565857353876841","bar":"4578135596460776054"},"time":"2020-02-02T11:59:39+01:00","message":"575269020497523263"}
+{"Logrus":{"foo":"3510565857353876841","bar":"4578135596460776054"},"level":"info","msg":"575269020497523263","time":"2020-02-02T11:59:39+01:00"}
 --------------------
 results:
-StdLog: 35590 ns per request
-Zerolog: 35619 ns per request
-ZapSugar: 43483 ns per request
-Zap: 43487 ns per request
-Logrus: 43964 ns per request
+Zerolog: 34514 ns per request
+Logger.Reflect: 36495 ns per request
+Logger.Stringer: 36834 ns per request
+ZapSugar: 44282 ns per request
+Zap: 44636 ns per request
+Logrus: 45052 ns per request
 
->Total duration: 43.964588385s
+>Total duration: 45.053029345s
 _____________________
 ---------------------
 ```
