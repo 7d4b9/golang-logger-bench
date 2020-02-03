@@ -9,12 +9,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gol4ng/logger"
+	loggerlog "github.com/gol4ng/logger"
 	"github.com/gol4ng/logger/formatter"
 	"github.com/gol4ng/logger/handler"
 
 	zerolog "github.com/rs/zerolog/log"
-	"github.com/sirupsen/logrus"
+	logruslog "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	zap "go.uber.org/zap"
 )
@@ -61,11 +61,11 @@ func main() {
 	zSugarLogger, _ := zap.NewProduction()
 	defer zSugarLogger.Sync()
 
-	logrusLog := logrus.New()
+	logrus := logruslog.New()
 
-	logrusLog.SetFormatter(&logrus.JSONFormatter{})
+	logrus.SetFormatter(&logruslog.JSONFormatter{})
 
-	loggerLog := logger.NewLogger(handler.Stream(os.Stderr, formatter.NewJSONEncoder()))
+	logger := loggerlog.NewLogger(handler.Stream(os.Stderr, formatter.NewJSONEncoder()))
 
 	type loggerType func(msg string, dummy *dummy)
 
@@ -74,17 +74,14 @@ func main() {
 		defer func() { fmt.Println("\n>Total duration:", time.Since(tic)) }()
 
 		for _, f := range []struct {
-			name   string
-			logger loggerType
+			name string
+			log  loggerType
 		}{
-			{"Logger.Stringer", func(msg string, dummy *dummy) {
-				loggerLog.Info(msg, &logger.Context{"LoggerStringer": {logger.StringerType, dummy}})
-			}},
-			{"Logger.Reflect", func(msg string, dummy *dummy) {
-				loggerLog.Info(msg, &logger.Context{"LoggerReflect": logger.Field{logger.ReflectType, dummy}})
+			{"Logger", func(msg string, dummy *dummy) {
+				logger.Info(msg, loggerlog.Ctx("Logger", dummy))
 			}},
 			{"Logrus", func(msg string, dummy *dummy) {
-				logrusLog.WithField("Logrus", dummy).Info(msg)
+				logrus.WithField("Logrus", dummy).Info(msg)
 			}},
 			{"Zap", func(msg string, dummy *dummy) {
 				zlogger.Info(msg, zap.Stringer("Zap", dummy))
@@ -98,7 +95,7 @@ func main() {
 		} {
 			t := time.Now()
 			for i := range textRandom {
-				f.logger(textRandom[i], &dummyLog[i])
+				f.log(textRandom[i], &dummyLog[i])
 			}
 			fmt.Println(f.name+":", int(time.Since(t).Nanoseconds())/len(textRandom), "ns per request")
 		}
