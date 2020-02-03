@@ -28,18 +28,17 @@ $(ALL:%=%_plot):
 
 README.md: _README.md
 	@mv _README.md README.md
+	@echo Generated README.md
 
 README_TARGET = all-plot
 
 _README.md:
-	@echo \# Golang logger benchmark > $@
-	@echo $# >> $@
-	@echo Generated $(@:_%=%) >> $@
-	@echo "> Makefile : $(ALL) $(ALL:%=%_plot)" >> $@
-	@echo \`\`\`sh >> $@
-	@echo make $(README_TARGET) >> $@
-	@echo \`\`\` >> $@
-	@echo \`\`\`sh >> $@
-	@$(MAKE) $(README_TARGET) | tee -a $@
-	@echo \`\`\` >> $@
-	@echo Generated $(@:_%=%)
+	@echo \# Golang logger benchmark > _README.md
+	@echo $$ >> _README.md
+	@echo Generated README.md >> _README.md
+	@echo "> Makefile : $(ALL) $(ALL:%=%_plot)" >> _README.md
+	@echo \`\`\`sh >> _README.md
+	@echo make $(README_TARGET) >> _README.md
+	@echo \`\`\` >> _README.md
+	@echo \`\`\`sh >> _README.md
+	@$(MAKE) $(README_TARGET) | tee -a _README.md
