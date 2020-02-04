@@ -1,8 +1,12 @@
 ALL := \
 	bench \
+	burst_bench \
 	json_bench \
+	burst_json_bench \
 	parallele_bench \
-	json_parallele_bench
+	burst_parallele_bench \
+	json_parallele_bench \
+	burst_json_parallele_bench
 
 all: $(ALL)
 
